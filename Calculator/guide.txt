@@ -1,1 +1,3 @@
-
+run this command on terminal-  python manage.py runserver
+copy the link and paste it to browser.
+after appearence of a calculation page,perform calculation
