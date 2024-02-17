@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% block body %}
+
+<style>
+  body {
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .profile-container {
+    width: 50%;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .user-info {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .user-info p {
+    margin: 10px 0;
+  }
+</style>
+
+<div class="profile-container">
+  <h1>Your Profile</h1>
+  <div class="user-info">
+    <p><strong>Name:</strong> {{ user.get_full_name }}</p>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Account Created:</strong> {{ user.date_joined|date:"F j, Y H:i" }}</p>
+  </div>
+</div>
+
+{% endblock %}

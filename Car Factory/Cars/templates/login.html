@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <h1>Login page</h1>
+    <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
+      <form method="POST" style="width:25%; border: 2px solid #007bff; padding: 20px; border-radius: 10px;">
+        {% csrf_token %} 
+
+        {% if form.non_field_errors %}
+          {% for er in form.non_field_errors %}
+            <p class="bg-danger text-white p-3">{{er}}</p>
+          {% endfor %}
+        {% endif %}  
+
+        {% for fm in form %}
+        <div class="form-group" style="margin-bottom: 15px;">
+          {{fm.label_tag}}
+          {{fm}}
+          {{fm.errors|striptags}}
+        </div>
+        {% endfor %}
+
+        <button class="btn btn-primary" type="submit" style="font-size: 16px; margin-top: 10px;">Login</button>
+        <small class="text-muted" style="display: block; margin-top: 10px;">Don't have an account? <a href="{% url 'signup' %}" style="text-decoration: none; color: #007bff;">Signup</a></small>
+      </form>
+    </div>  
+{% endblock %}

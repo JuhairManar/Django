@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}Car display{% endblock %}
+
+{% block body %}
+<body style="background: rgb(91, 131, 131)">
+    <div class="container">
+
+        <h1 style="text-align: center;">Car Information</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Electric Cars</h2>
+                {% if electric_cars %}
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Name</th>
+                                <th>Model</th>
+                                <th>Year</th>
+                                <th>Battery Capacity</th>
+                                <th>Created</th>
+                                <th>User</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for electric_car in electric_cars %}
+                                <tr>
+                                    <td>{{ electric_car.name }}</td>
+                                    <td>{{ electric_car.model }}</td>
+                                    <td>{{ electric_car.year }}</td>
+                                    <td>{{ electric_car.battery_capacity }}</td>
+                                    <td>{{ electric_car.created }}</td>
+                                    <td>{{ electric_car.user }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>No electric car data to display.</p>
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                <h2>Gas Cars</h2>
+                {% if gas_cars %}
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Name</th>
+                                <th>Model</th>
+                                <th>Year</th>
+                                <th>Fuel Efficiency</th>
+                                <th>Created</th>
+                                <th>User</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for gas_car in gas_cars %}
+                                <tr>
+                                    <td>{{ gas_car.name }}</td>
+                                    <td>{{ gas_car.model }}</td>
+                                    <td>{{ gas_car.year }}</td>
+                                    <td>{{ gas_car.fuel_efficiency }}</td>
+                                    <td>{{ gas_car.created }}</td>
+                                    <td>{{ gas_car.user }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>No gas car data to display.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
